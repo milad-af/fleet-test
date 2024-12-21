@@ -1,0 +1,8 @@
+defaultNamespace: cattle-logging-system
+helm:
+  repo: https://grafana.github.io/helm-charts
+  chart: loki
+  version: 6.23.0
+  releaseName: loki
+  valuesFiles:
+    - values.yaml
