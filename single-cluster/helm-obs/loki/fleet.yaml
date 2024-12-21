@@ -5,4 +5,4 @@ helm:
   version: 6.23.0
   releaseName: loki
   valuesFiles:
-    - values.yaml
+    - ./values.yaml  
