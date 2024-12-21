@@ -1,4 +1,4 @@
-defaultNamespace: cattle-logging-system
+defaultNamespace: loki-stack
 helm:
   repo: https://grafana.github.io/helm-charts
   chart: loki
