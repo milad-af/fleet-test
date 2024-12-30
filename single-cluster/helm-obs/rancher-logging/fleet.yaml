@@ -1,0 +1,18 @@
+defaultNamespace: cattle-logging-system
+helm:
+  releaseName: rancher-logging
+  repo: https://charts.rancher.io
+  chart: rancher-logging
+  version: 104.1.0+up57.0.3
+diff:
+  comparePatches:
+    - apiVersion: admissionregistration.k8s.io/v1
+      kind: MutatingWebhookConfiguration
+      name: rancher-logging-admission
+      operations:
+        - {"op":"remove", "path":"/webhooks/0/failurePolicy"}
+    - apiVersion: admissionregistration.k8s.io/v1
+      kind: ValidatingWebhookConfiguration
+      name: rancher-logging-admission
+      operations:
+        - {"op":"remove", "path":"/webhooks/0/failurePolicy"}
