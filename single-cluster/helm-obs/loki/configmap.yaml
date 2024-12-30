@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rancher-monitoring-grafana-loki-datasource
+  annotations:
+    {}
+  labels:
+    grafana_datasource: '1'
+
+  namespace: cattle-monitoring-system
+data:
+  datasource.yaml: |+
+    apiVersion: 1
+    datasources:
+    - name: Loki
+      type: loki
+      url: http://loki-gateway.loki-stack.svc.cluster.local
+      access: proxy
+      editable: false
+      jsonData:
+        maxLines: 1000
+        derivedFields: []
+        httpHeaderName1: "X-Scope-OrgID"
+      secureJsonData:
+        httpHeaderValue1: "nimbus"
