@@ -1,0 +1,27 @@
+## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+##
+grafana:
+  additionalDataSources:
+  # - name: prometheus-sample
+  #   access: proxy
+  #   basicAuth: true
+  #   basicAuthPassword: pass
+  #   basicAuthUser: daco
+  #   editable: false
+  #   jsonData:
+  #       tlsSkipVerify: true
+  #   orgId: 1
+  #   type: prometheus
+  #   url: https://{{ printf "%s-prometheus.svc" .Release.Name }}:9090
+  #   version: 1
+    - name: Loki
+      type: loki
+      url: http://loki-gateway.loki-stack.svc.cluster.local
+      access: proxy
+      editable: false
+      jsonData:
+        maxLines: 1000
+        derivedFields: []
+        httpHeaderName1: "X-Scope-OrgID"
+      secureJsonData:
+        httpHeaderValue1: "nimbus"
