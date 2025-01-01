@@ -9,7 +9,7 @@ grafana:
   persistence:
     accessModes:
       - ReadWriteOnce
-    storageClassName: null
+    storageClassName: harvester
     size: 10Gi
     subPath: null
     type: pvc
