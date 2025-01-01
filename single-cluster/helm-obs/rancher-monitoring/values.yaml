@@ -18,6 +18,15 @@ grafana:
     size: 10Gi
     type: pvc
     enabled: true
+  sidecar:
+    dashboards:
+      provider:
+        foldersFromFilesStructure: true
+  dashboards:
+    default:
+      custom-dashboard:
+        json: |
+{{ (.Files.Glob "grafana-dashboards/*.json").AsConfig | indent 10 }}
   additionalDataSources: 
     - name: Loki
       type: loki
