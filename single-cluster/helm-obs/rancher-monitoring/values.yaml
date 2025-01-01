@@ -6,10 +6,7 @@ grafana:
       - ReadWriteOnce
     storageClassName: harvester
     size: 10Gi
-    subPath: null
     type: pvc
-    annotations: null
-    finalizers: null
     enabled: true
   additionalDataSources: 
     - name: Loki
