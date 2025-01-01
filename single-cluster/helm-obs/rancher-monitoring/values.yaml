@@ -11,18 +11,7 @@ grafana:
     annotations: null
     finalizers: null
     enabled: true
-  additionalDataSources:
-    - name: Loki
-      type: loki
-      url: http://loki-gateway.loki-stack.svc.cluster.local
-      access: proxy
-      editable: false
-      jsonData:
-        maxLines: 1000
-        derivedFields: []
-        httpHeaderName1: "X-Scope-OrgID"
-      secureJsonData:
-        httpHeaderValue1: "nimbus"
+
 
 prometheus:
   prometheusSpec:
