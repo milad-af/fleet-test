@@ -1,0 +1,13 @@
+{{- $dashboards := .Files.Glob "dashboards/*.json" }}
+{{- range $file := $dashboards }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-{{ $file.Base | replace "." "-" }}
+  namespace: cattle-monitoring-system
+  labels:
+    grafana_dashboard: "1"
+data:
+  {{ $file.Base }}: |
+{{ $file.Content | indent 4 }}
+{{- end }}
