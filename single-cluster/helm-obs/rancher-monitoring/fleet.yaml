@@ -6,8 +6,6 @@ helm:
   version: 105.1.1+up61.3.2
   valuesFiles:
     - ./values.yaml  
-  chartFiles:
-   - ./
 diff:
   comparePatches:
     - apiVersion: admissionregistration.k8s.io/v1
