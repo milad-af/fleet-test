@@ -1,19 +1,22 @@
+alertmanager:
+  alertmanagerSpec:
+    useExistingSecret: true
+    configSecret: alertmanager-rancher-monitoring-alertmanager
+
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 ##
 grafana:
+  persistence:
+    accessModes:
+      - ReadWriteOnce
+    storageClassName: null
+    size: 10Gi
+    subPath: null
+    type: pvc
+    annotations: null
+    finalizers: null
+    enabled: true
   additionalDataSources:
-  # - name: prometheus-sample
-  #   access: proxy
-  #   basicAuth: true
-  #   basicAuthPassword: pass
-  #   basicAuthUser: daco
-  #   editable: false
-  #   jsonData:
-  #       tlsSkipVerify: true
-  #   orgId: 1
-  #   type: prometheus
-  #   url: https://{{ printf "%s-prometheus.svc" .Release.Name }}:9090
-  #   version: 1
     - name: Loki
       type: loki
       url: http://loki-gateway.loki-stack.svc.cluster.local
@@ -25,3 +28,26 @@ grafana:
         httpHeaderName1: "X-Scope-OrgID"
       secureJsonData:
         httpHeaderValue1: "nimbus"
+
+prometheus:
+  prometheusSpec:
+    retentionSize: 50GiB
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 50Gi
+    
+rke2ControllerManager:
+  enabled: true
+rke2Etcd:
+  enabled: true
+rke2IngressNginx:
+  enabled: true
+rke2Proxy:
+  enabled: true
+rke2Scheduler:
+  enabled: true
