@@ -1,5 +1,7 @@
 apiVersion: v2
 name: grafana-dashboards
+namespace: cattle-monitoring-system
+type: application
 description: Adding grafana dashboards
 version: 0.1.0
 appVersion: 0.1.0
