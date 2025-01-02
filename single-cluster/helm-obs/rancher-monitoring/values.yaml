@@ -1,12 +1,8 @@
 global:
   cattle:
-    clusterId: c-m-g7g4frck
-    clusterName: nimbus
-    rkePathPrefix: ""
-    rkeWindowsPathPrefix: ""
-    systemDefaultRegistry: ""
-    systemProjectId: p-h5c7g
-    url: https://rancher.hiro-develop.nl
+    clusterId: "{{ .ClusterID }}"
+    clusterName: "{{ .ClusterName }}"
+    url: "{{ .ClusterURL }}"
   systemDefaultRegistry: ""
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 ##
