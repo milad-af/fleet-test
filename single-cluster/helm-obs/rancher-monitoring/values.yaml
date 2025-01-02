@@ -1,9 +1,9 @@
-global:
-  cattle:
-    clusterId: "{{ .ClusterID }}"
-    clusterName: "{{ .ClusterName }}"
-    url: "{{ .ClusterURL }}"
-  systemDefaultRegistry: ""
+# global:
+#   cattle:
+#     clusterId: "{{ .ClusterID }}"
+#     clusterName: "{{ .ClusterName }}"
+#     url: "{{ .ClusterURL }}"
+#   systemDefaultRegistry: ""
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 ##
 grafana:
