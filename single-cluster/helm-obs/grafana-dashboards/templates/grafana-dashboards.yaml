@@ -8,7 +8,7 @@ metadata:
   name: grafana-dashboard-{{ $dashboardName | lower | replace " " "-" }}
   namespace: {{ $.Release.Namespace }}
   labels:
-    grafana_dashboard: "1"
+    grafana_dashboard: '1'
 data:
   {{ base $path }}: |-
 {{ $files.Get $path | indent 4 }}
