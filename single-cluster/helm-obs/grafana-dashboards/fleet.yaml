@@ -1,0 +1,3 @@
+defaultNamespace: monitoring
+helm:
+  releaseName: grafana-dashboards

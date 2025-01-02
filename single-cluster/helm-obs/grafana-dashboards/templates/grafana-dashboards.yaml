@@ -1,13 +1,15 @@
+{{- $files := .Files }}
+{{- range $path, $_ := .Files.Glob "dashboards/*.json" }}
+{{- $dashboardName := base $path | trimSuffix ".json" }}
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-dashboards
+  name: grafana-dashboard-{{ $dashboardName | lower | replace " " "-" }}
+  namespace: {{ $.Release.Namespace }}
   labels:
     grafana_dashboard: "1"
 data:
-  {{- $files := .Files }}
-  {{- range $key, $value := .Files }}
-  {{- if hasPrefix "dashboards/" $key }} {{/* only when in dashboards/ */}}
-  {{ $key | trimPrefix "dashboards/" }}: {{ $files.Get $key | quote }} {{/* adapt $key as desired */}}
-  {{- end }}
-  {{- end }}
+  {{ base $path }}: |-
+{{ $files.Get $path | indent 4 }}
+{{- end }}
